@@ -1,0 +1,33 @@
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+b {
+  /* used for event dates/times */
+  margin-right: 3px;
+}
+
+.scheduler-app-main {
+  flex-grow: 1;
+  padding: 1.2em;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+.fc {
+  /* the calendar root */
+  height: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.title_event {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+.selectDoctor {
+  width: 300px;
+  box-shadow: 3px 5px 7px rgba(0, 21, 41, 0.08);
+  border-radius: 3px;
+}

@@ -1,0 +1,156 @@
+<h1 style="font-weight: 500; text-align: center;padding-top: 20px;" nz-typography>TEAM</h1>
+
+<div style="display: flex; justify-content: center;">
+    <button nz-button nzType="primary" style=" width: 150px;" (click)="showModal()">Add New
+        User</button>
+</div>
+
+<div class="Card-Container" style="margin-bottom: 20px;">
+    <div nz-row [nzGutter]="[10,16]">
+        <div nz-col class="gutter-row" [nzSpan]="spanDimension" *ngFor="let user of users">
+            <nz-card class="Card-Team" [nzActions]="[actionEdit,actionDelete]" nzTitle="{{user.name}}"
+                [nzBordered]="true">
+                <h3 class="statistics"><span nz-icon nzType="user" nzTheme="outline" style="margin-right: 4px;"></span>
+                    {{user.username}}</h3>
+                <h3 class="statistics"><span nz-icon nzType="medicine-box" nzTheme="outline"
+                        style="margin-right: 4px;"></span> {{user.role}}</h3>
+                <h3 class="statistics"><span nz-icon nzType="mail" nzTheme="outline" style="margin-right: 4px;"></span>
+                    {{user.email}}</h3>
+                <h3 class="statistics"><span nz-icon nzType="phone" nzTheme="outline" style="margin-right: 4px;"></span>
+                    {{user.phone}}</h3>
+            </nz-card>
+            <!-- Button edit, Delete -->
+            <ng-template #actionEdit>
+                <span nz-icon nzType="edit" (click)="showModalEdit(user._id)"></span>
+            </ng-template>
+            <ng-template #actionDelete>
+                <span nz-icon nzType="delete" (click)="showModalRemove(user._id)"></span>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal add Content -->
+<ng-template #modalContent>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input full name">
+                <input nz-input formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="email" id="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input password!">
+                <input nz-input type="password" id="password" formControlName="password" minlength="6"
+                    (ngModelChange)="updateConfirmValidator()" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+                <input nz-input type="password" formControlName="checkPassword" id="checkPassword" minlength="6" />
+                <ng-template #errorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+                    <ng-container *ngIf="control.hasError('confirm')">
+                        Two passwords that you enter is inconsistent!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="username" nzRequired>
+                <span>Username</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input username!">
+                <input nz-input id="username" formControlName="username" />
+                <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;" *ngIf="userExist">
+                    username alredy exist!
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="phone" nzRequired>Phone Number</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input phone number!">
+                <nz-input-group>
+                    <input formControlName="phone" id="'phone'" nz-input minlength="10" maxlength="10" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</ng-template>
+<!-- Modal Edit Content -->
+<ng-template #modalContentEdit>
+    <form nz-form [formGroup]="validateFormEdit" (ngSubmit)="submitFormEdit()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="name">Name</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input formControlName="name" id="name" [placeholder]="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="email" id="email" [placeholder]="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="password">Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input type="password" id="password" formControlName="password" minlength="6"
+                    (ngModelChange)="updateConfirmValidatorEdit()" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="checkPassword">Confirm Password</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+                <input nz-input type="password" formControlName="checkPassword" id="checkPassword" minlength="6" />
+                <ng-template #errorTpl let-control>
+                    <ng-container *ngIf="control.hasError('confirm')">
+                        Two passwords that you enter is inconsistent!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="username">
+                <span>Username</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input id="username" formControlName="username" [placeholder]="username" />
+                <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;" *ngIf="userExist">
+                    username alredy exist!
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" [nzXs]="24" nzFor="phone">Phone Number</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input phone number!">
+                <nz-input-group>
+                    <input formControlName="phone" id="'phone'" nz-input minlength="10" maxlength="10"
+                        [placeholder]="phone" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</ng-template>
+<!-- Modal Add -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add User" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm()"
+    (keyup.enter)="submitForm()" [nzOkLoading]="isOkLoading" [nzContent]="modalContent">
+</nz-modal>
+<!-- Modal Edit -->
+<nz-modal [(nzVisible)]="isVisibleEdit" nzTitle="Edit User" (nzOnCancel)="handleCancelEdit()"
+    (nzOnOk)="submitFormEdit()" [nzOkLoading]="isOkLoadingEdit" [nzContent]="modalContentEdit">
+</nz-modal>
+<!-- Modal Remove -->
+<nz-modal [(nzVisible)]="isVisibleRemove" nzTitle="Remove User" (nzOnCancel)="handleCancelRemove()"
+    (nzOnOk)="handleOkRemove()" [nzOkLoading]="isOkLoadingRemove">
+    <p *nzModalContent>Are you sure you want to delete this User?</p>
+</nz-modal>

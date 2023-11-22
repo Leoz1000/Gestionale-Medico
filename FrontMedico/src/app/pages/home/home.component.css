@@ -1,0 +1,70 @@
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
+}
+.Chart-card {
+  width: 30%;
+  flex: 0 0 auto;
+  margin-left: 18.5px;
+  margin-right: 18.5px;
+  background-color: antiquewhite;
+  box-shadow: 1px 3px 6px rgba(0, 21, 41, 0.08);
+}
+.Card-Container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Table-Container {
+  margin-top: 35px;
+  margin-left: 45.5px;
+  margin-right: 45.5px;
+}
+
+@media only screen and (max-width: 1782px) {
+  .Table-Container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 1382px) {
+  .Chart-card {
+    width: 95%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  .Table-Container {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Chart-card {
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Card-Container {
+    padding-top: 10px;
+  }
+  .Table-Container {
+    padding: 0%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

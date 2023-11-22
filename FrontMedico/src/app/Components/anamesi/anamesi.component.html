@@ -1,0 +1,165 @@
+<div *ngIf="id==='new'" style="display: flex; width: 100%;height: 100%; justify-content: center; align-items: center; ">
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()"
+        style="width: 500px; background-color: #fbfbfd; padding-top: 20px;padding-bottom: 10px; padding-left: 20px;padding-right: 20px; box-shadow: 3px 5px 7px rgba(0, 21, 41, 0.08);">
+        <h1 style="font-weight: 500; text-align: center;" nz-typography>Add New Patient</h1>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="fullName" nzRequired>Full Name</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input full name">
+                <input nz-input type="text" id="fullName" formControlName="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="email" id="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="Fiscal Code" nzRequired>
+                <span>Fiscal Code</span>
+            </nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="'Please input your fiscal Code'">
+                <input nz-input id="fiscalCode" formControlName="fiscalCode" minlength="16" maxlength="16" />
+                <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
+                    *ngIf="fiscalCodeExists">
+                    FiscalCode alredy exist!
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input your phone number!">
+                <input formControlName="phone" id="'phoneNumber'" nz-input minlength="10" maxlength="10" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
+            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please select your doctor!">
+                <nz-select id="doctor" formControlName="doctorSelected" nzPlaceHolder="Select a doctor">
+                    <nz-option *ngFor="let doctor of doctors" nzValue="{{doctor._id}}"
+                        nzLabel="{{doctor.name}}"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="24" [nzOffset]="5" [nzSm]="18">
+                <button nz-button nzType="primary">Add Patient</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
+
+<div *ngIf="id!=='new'||''"
+    style="display: flex; width: 100%; height: 100%; justify-content: center; align-items: center; ">
+    <!-- TAB DATI -->
+    <nz-tabset nzCentered="true"
+        style="width: 500px;max-height: 550px;  background-color: #fbfbfd; padding-top: 20px;padding-bottom: 10px; box-shadow: 3px 5px 7px rgba(0, 21, 41, 0.08);">
+        <!-- TAB DATA -->
+        <nz-tab [nzTitle]="data">
+            <ng-template #data>
+                <div style="display: flex; align-items: center;">
+                    <span nz-icon style="margin-right: 5px;" nzType="database"></span>
+                    Data
+                </div>
+            </ng-template>
+            <!-- FORM MODIFCA DATI -->
+            <form nz-form [formGroup]="validateFormEdit" (ngSubmit)="submitFormEdit()"
+                style="padding-left: 20px; padding-right: 10px;">
+                <h1 style="font-weight: 500; text-align: center;" nz-typography>Edit Patient</h1>
+
+                <nz-form-item>
+                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="name">Name</nz-form-label>
+                    <nz-form-control [nzSm]="18" [nzXs]="24">
+                        <input nz-input formControlName="name" id="name" [placeholder]="name" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                        <input nz-input formControlName="email" id="email" [placeholder]="email" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="FiscalCode">
+                        <span>FiscalCode</span>
+                    </nz-form-label>
+                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is too short for a Fiscal Code!">
+                        <input nz-input id="FiscalCode" formControlName="fiscalCode" [placeholder]="fiscalCode"
+                            minlength="16" maxlength="16" />
+                        <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
+                            *ngIf="fiscalCodeExists">
+                            FiscalCode alredy exist!
+                        </div>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="phone">Phone Number</nz-form-label>
+                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input phone number!">
+                        <nz-input-group>
+                            <input formControlName="phone" id="'phone'" nz-input minlength="10" maxlength="10"
+                                [placeholder]="phone" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
+                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please select your doctor!">
+                        <nz-select id="doctor" formControlName="doctorSelected" nzPlaceHolder="{{doctorSelected}}">
+                            <nz-option *ngFor="let doctor of doctors" nzValue="{{doctor._id}}"
+                                nzLabel="{{doctor.name}}"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row class="register-area">
+                    <nz-form-control [nzSpan]="24" [nzOffset]="5" [nzSm]="18">
+                        <button nz-button nzType="primary">Edit Patient</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </nz-tab>
+        <!-- TAB ANAMNESI -->
+        <nz-tab [nzTitle]="Anamnesi">
+            <ng-template #Anamnesi>
+                <div style="display: flex; align-items: center;">
+                    <span nz-icon style="margin-right: 5px;" nzType="schedule"></span>
+                    Anamnesi
+                </div>
+
+            </ng-template>
+            <div style="overflow-y: auto; height: 400px; padding-left: 20px; padding-right: 20px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <button *ngIf="!addNewAnamnesi" nz-button nzType="primary" style="margin-top: 5px; width: 150px;"
+                        (click)="addAnamnesi()">Add New Anamnesi
+                    </button>
+                    <button *ngIf="addNewAnamnesi" nz-button nzType="primary" style="margin-top: 5px; width: 150px;"
+                        (click)="addAnamnesi()">Confirm
+                    </button>
+                </div>
+                <nz-timeline>
+                    <!-- ADD ANAMNESI -->
+                    <nz-timeline-item *ngIf="addNewAnamnesi">
+                        <textarea nz-input placeholder="Add Anamnesi" [(ngModel)]="newAnamnesi"
+                            [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
+                        <nz-date-picker style="margin-top: 10px;" [(ngModel)]="newPrenotations"></nz-date-picker>
+                    </nz-timeline-item>
+                    <!-- AREA ANAMNESI -->
+                    <nz-timeline-item *ngFor="let anamnesi of anamnesis;index as i"> <textarea nz-input
+                            placeholder="add anamnesi" [(ngModel)]="anamnesi[0]"
+                            (ngModelChange)="updateAnamnesi(anamnesi[0])" [nzAutosize]="{ minRows: 3, maxRows: 5 }"
+                            name="anamnesi"></textarea>
+                        <nz-date-picker style="margin-top: 10px; margin-right: 10px;" [(ngModel)]="anamnesi[1]"
+                            (ngModelChange)="updatePrenotation(anamnesi[1])" name="dateAnamnesi"></nz-date-picker>
+                        <!-- BUTTON MODIFICA -->
+                        <button nz-button nzType="primary" style="margin-right: 10px;" [nzSize]="'default'"><span
+                                nz-icon nzType="edit" (click)="updateAll(i)"></span></button>
+                        <button nz-button nzType="primary" nzDanger style="margin-right: 10px;" [nzSize]="'default'"
+                            (click)="deleteAnamnesi(i,anamnesi)"><span nz-icon nzType="delete"></span></button>
+                    </nz-timeline-item>
+                </nz-timeline>
+
+            </div>
+        </nz-tab>
+    </nz-tabset>
+</div>

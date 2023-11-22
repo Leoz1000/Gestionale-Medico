@@ -1,0 +1,90 @@
+<nz-layout class="app-layout" *ngIf="isLogged" style="min-height: 100vh;">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="206px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null">
+        <div class="sidebar-logo">
+            <a routerLink="/home">
+                <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+                <h1>Medical Center</h1>
+            </a>
+        </div>
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-menu-item routerLink="/home">
+                <span nz-icon nzType="dashboard" nzTheme="outline"
+                    style="padding-right: 7px; padding-bottom: 3px;"></span>
+                <span>Dashboard</span>
+            </li>
+            <li nz-menu-item routerLink="/request">
+                <span nz-icon nzType="usergroup-add" nzTheme="outline"
+                    style="padding-right: 7px; padding-bottom: 3px;"></span>
+                <span>Request Client</span>
+            </li>
+            <li nz-menu-item routerLink="/calendar">
+                <span nz-icon nzType="calendar" nzTheme="outline"
+                    style="padding-right: 7px; padding-bottom: 3px;"></span>
+                <span>Calendar</span>
+            </li>
+            <li nz-menu-item routerLink="/patient">
+                <span nz-icon nzType="team" nzTheme="outline" style="padding-right: 7px; padding-bottom: 3px;"></span>
+                <span>patients</span>
+            </li>
+            <li nz-menu-item routerLink="/team" *ngIf="roleAuthorized">
+                <span nz-icon nzType="apartment" nzTheme="outline"
+                    style="padding-right: 7px; padding-bottom: 3px;"></span>
+                <span>Team</span>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-layout>
+        <nz-header>
+            <div class="app-header" *ngIf="!isCollapsed">
+                <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                    <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+                </span>
+                <div style="display: flex;">
+                    <div style="cursor: pointer; display: flex;" routerLink="/profile">
+                        <span nz-icon nzType="user" nzTheme="outline" class="profile"></span>
+                        <div style="display: flex; flex-direction: column; height: 100%; line-height: 58px !important;">
+                            <span
+                                style="margin-top: -9px; padding: 0; height: 15px; font-weight: 500;">{{user.username}}</span>
+                            <span>{{user.role}}</span>
+                        </div>
+                    </div>
+                    <span nz-icon nzType="logout" nzTheme="outline" class="logout" (click)="logout()"></span>
+                </div>
+            </div>
+            <div class="app-header" *ngIf="isCollapsed" style="padding-left: 75px;">
+                <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                    <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+                </span>
+                <div style="display: flex;">
+                    <div style="cursor: pointer; display: flex;" routerLink="/profile">
+                        <span nz-icon nzType="user" nzTheme="outline" class="profile"></span>
+                        <div style="display: flex; flex-direction: column; height: 100%;">
+                            <span
+                                style="margin-top: -8px; padding: 0; height: 15px; font-weight: 500;">{{user.username}}</span>
+                            <span>{{user.role}}</span>
+                        </div>
+                    </div>
+                    <span nz-icon nzType="logout" nzTheme="outline" class="logout" (click)="logout()"></span>
+                </div>
+            </div>
+        </nz-header>
+        <nz-content *ngIf="!isCollapsed">
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+
+        </nz-content>
+        <nz-content *ngIf="isCollapsed" style="padding-left: 60px;">
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+        <nz-footer
+            style="text-align: center; width: 100%; background-color: #fbfbfd;box-shadow: 3px 5px 7px rgba(0, 21, 41, 0.08);">Leonardi
+            ©2020</nz-footer>
+
+    </nz-layout>
+</nz-layout>
+
+<router-outlet *ngIf="!isLogged"></router-outlet>

@@ -1,0 +1,34 @@
+<div style="width: 100%; display: flex; justify-content: center; padding-top: 15px;">
+    <nz-select nzShowSearch nzAllowClear nz nzPlaceHolder="Select a person" [(ngModel)]="selectedValue" nzSize="large"
+        (ngModelChange)="Changes()" *ngIf="!isDoctor" class="selectDoctor">
+        <nz-option [nzLabel]="'D.'+user.name" [nzValue]="user._id" *ngFor="let user of users"></nz-option>
+    </nz-select>
+</div>
+
+<div class='scheduler-app-main' *ngIf="isDoctor||selectedValue!==null&&!changes">
+    <full-calendar [options]='calendarOptions()'>
+        <ng-template #eventContent let-arg>
+            <div *ngIf="!arg.event.allDay&&arg.view.type==='dayGridMonth'" class="fc-daygrid-event-dot"
+                style="border-color: {{dotColor}};">
+                {{ arg.event.icon }}
+            </div>
+            <div style="display: flex;">
+                <b>{{ arg.timeText }}</b>
+                <p class="title_event">{{ arg.event.title }}</p>
+            </div>
+        </ng-template>
+    </full-calendar>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Event" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+        [nzOkLoading]="isOkLoading">
+        <input nz-input placeholder="Event Title" [(ngModel)]="value" type="text" *nzModalContent
+            (keyup.enter)="handleOk()" />
+    </nz-modal>
+    <nz-modal [(nzVisible)]="isVisibleRemove" nzTitle="Remove Event" (nzOnCancel)="handleCancelRemove()"
+        (nzOnOk)="handleOkRemove()" [nzOkLoading]="isOkLoadingRemove">
+        <p *nzModalContent>Are you sure you want to delete the event?</p>
+    </nz-modal>
+</div>
+<!-- <label>
+    <input type='checkbox' [checked]='calendarOptions().weekends' (change)='handleWeekendsToggle()' />
+    toggle weekends
+</label> -->
