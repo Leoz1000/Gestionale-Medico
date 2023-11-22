@@ -1,16 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../_services/user.service';
 import { ClientService } from '../../_services/client.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tuple } from 'ng-zorro-antd/core/types';
 
 @Component({
   selector: 'app-anamesi',

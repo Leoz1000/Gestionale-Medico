@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { S } from '@fullcalendar/core/internal-common';
 import { ClientService } from 'src/app/_services/client.service';
 import { UserService } from 'src/app/_services/user.service';
 
