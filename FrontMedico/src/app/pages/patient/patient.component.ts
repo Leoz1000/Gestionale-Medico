@@ -7,7 +7,7 @@ interface ItemPatient {
   _id: string;
   name: string;
   fiscalCode: string;
-  email: number;
+  email: string;
   phone: string;
   doctorSelected: string;
 }

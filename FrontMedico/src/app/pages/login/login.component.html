@@ -1,18 +1,20 @@
 <div
     style="display: flex; flex-direction: column; height: 100vh; width: 100vw; justify-content: center; align-items: center;">
-    <h1 nz-typography>Accedi</h1>
+    <h1 nz-typography>Log In</h1>
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onSubmit()">
         <nz-form-item>
             <nz-form-control nzErrorTip="Please input your username!">
                 <nz-input-group nzPrefixIcon="user">
-                    <input type="text" nz-input formControlName="username" placeholder="Username" />
+                    <input type="text" style="height: 30px;" nz-input formControlName="username"
+                        placeholder="Username" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="Please input your Password!">
                 <nz-input-group nzPrefixIcon="lock">
-                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                    <input type="password" style="height: 30px;" nz-input formControlName="password"
+                        placeholder="Password" />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>

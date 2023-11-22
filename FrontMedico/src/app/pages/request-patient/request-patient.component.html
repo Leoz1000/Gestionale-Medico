@@ -21,7 +21,7 @@
         <tr *ngFor="let client of nzTable.data">
             <ng-container>
                 <td>{{ client.name }}</td>
-                <td>{{ client.email }}</td>
+                <td>{{ client.email | lowercase}}</td>
                 <td>{{ client.phone }}</td>
                 <td>{{ client.doctorName }}</td>
                 <td>{{ client.prenotation|date:'dd/MM/yyyy HH:mm' }}</td>

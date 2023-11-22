@@ -15,6 +15,7 @@
   font-weight: 400;
   line-height: 25px;
   margin: 0;
+  font-size: larger;
   display: flex;
   align-items: center;
 }

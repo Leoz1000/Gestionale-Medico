@@ -31,7 +31,7 @@
             <ng-container>
                 <td>{{ patient.name }}</td>
                 <td>{{ patient.fiscalCode | uppercase }}</td>
-                <td>{{ patient.email }}</td>
+                <td>{{ patient.email | lowercase }}</td>
                 <td>{{ patient.phone }}</td>
                 <td>{{ patient.doctorSelected }}</td>
                 <td><a (click)="openScheda(patient._id)" class="request-button">Scheda Patient</a></td>

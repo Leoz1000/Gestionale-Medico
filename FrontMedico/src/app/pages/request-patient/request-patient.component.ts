@@ -5,7 +5,7 @@ import { UserService } from 'src/app/_services/user.service';
 interface ItemClient {
   _id: string;
   name: string;
-  email: number;
+  email: string;
   phone: string;
   doctorSelected: string;
   doctorName: string;

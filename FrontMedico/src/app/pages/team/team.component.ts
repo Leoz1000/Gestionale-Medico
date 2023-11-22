@@ -7,6 +7,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -30,7 +31,8 @@ export class TeamComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    private router: Router
   ) {
     //Validate Form
     this.validateForm = this.fb.group({
@@ -101,6 +103,10 @@ export class TeamComponent implements OnInit, OnDestroy {
 
   //Get All User
   ngOnInit(): void {
+    //CHECK USER ROLE AND ROUTE TO HOME IF ROLE IS SECRETARY
+    const user = this.userService.getUser();
+    if (user.role == 'secretary') this.router.navigate(['/home']);
+
     this.subscriptionUser = this.userService
       .getUserAll()
       .subscribe(async (data: any) => {

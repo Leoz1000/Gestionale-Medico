@@ -5,22 +5,22 @@
         <h1 style="font-weight: 500; text-align: center;" nz-typography>Add New Patient</h1>
 
         <nz-form-item>
-            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="fullName" nzRequired>Full Name</nz-form-label>
-            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input full name">
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fullName" nzRequired>Full Name</nz-form-label>
+            <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Please input full name">
                 <input nz-input type="text" id="fullName" formControlName="name" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
                 <input nz-input formControlName="email" id="email" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="Fiscal Code" nzRequired>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="Fiscal Code" nzRequired>
                 <span>Fiscal Code</span>
             </nz-form-label>
-            <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="'Please input your fiscal Code'">
+            <nz-form-control [nzSm]="17" [nzXs]="24" [nzErrorTip]="'Please input your fiscal Code'">
                 <input nz-input id="fiscalCode" formControlName="fiscalCode" minlength="16" maxlength="16" />
                 <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
                     *ngIf="fiscalCodeExists">
@@ -29,14 +29,14 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
-            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input your phone number!">
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+            <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Please input your phone number!">
                 <input formControlName="phone" id="'phoneNumber'" nz-input minlength="10" maxlength="10" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
-            <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please select your doctor!">
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
+            <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Please select your doctor!">
                 <nz-select id="doctor" formControlName="doctorSelected" nzPlaceHolder="Select a doctor">
                     <nz-option *ngFor="let doctor of doctors" nzValue="{{doctor._id}}"
                         nzLabel="{{doctor.name}}"></nz-option>
@@ -70,22 +70,22 @@
                 <h1 style="font-weight: 500; text-align: center;" nz-typography>Edit Patient</h1>
 
                 <nz-form-item>
-                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="name">Name</nz-form-label>
-                    <nz-form-control [nzSm]="18" [nzXs]="24">
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Name</nz-form-label>
+                    <nz-form-control [nzSm]="17" [nzXs]="24">
                         <input nz-input formControlName="name" id="name" [placeholder]="name" />
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
-                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
                         <input nz-input formControlName="email" id="email" [placeholder]="email" />
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="FiscalCode">
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="FiscalCode">
                         <span>FiscalCode</span>
                     </nz-form-label>
-                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="The input is too short for a Fiscal Code!">
+                    <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="The input is too short for a Fiscal Code!">
                         <input nz-input id="FiscalCode" formControlName="fiscalCode" [placeholder]="fiscalCode"
                             minlength="16" maxlength="16" />
                         <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
@@ -95,8 +95,8 @@
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="phone">Phone Number</nz-form-label>
-                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please input phone number!">
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phone">Phone Number</nz-form-label>
+                    <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Please input phone number!">
                         <nz-input-group>
                             <input formControlName="phone" id="'phone'" nz-input minlength="10" maxlength="10"
                                 [placeholder]="phone" />
@@ -104,8 +104,8 @@
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
-                    <nz-form-control [nzSm]="18" [nzXs]="24" nzErrorTip="Please select your doctor!">
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="doctor" nzRequired>Doctor</nz-form-label>
+                    <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="Please select your doctor!">
                         <nz-select id="doctor" formControlName="doctorSelected" nzPlaceHolder="{{doctorSelected}}">
                             <nz-option *ngFor="let doctor of doctors" nzValue="{{doctor._id}}"
                                 nzLabel="{{doctor.name}}"></nz-option>
@@ -140,12 +140,12 @@
                 <nz-timeline>
                     <!-- ADD ANAMNESI -->
                     <nz-timeline-item *ngIf="addNewAnamnesi">
-                        <textarea nz-input placeholder="Add Anamnesi" [(ngModel)]="newAnamnesi"
+                        <textarea maxlength="500" nz-input placeholder="Add Anamnesi" [(ngModel)]="newAnamnesi"
                             [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
                         <nz-date-picker style="margin-top: 10px;" [(ngModel)]="newPrenotations"></nz-date-picker>
                     </nz-timeline-item>
                     <!-- AREA ANAMNESI -->
-                    <nz-timeline-item *ngFor="let anamnesi of anamnesis;index as i"> <textarea nz-input
+                    <nz-timeline-item *ngFor="let anamnesi of anamnesis;index as i"> <textarea maxlength="500" nz-input
                             placeholder="add anamnesi" [(ngModel)]="anamnesi[0]"
                             (ngModelChange)="updateAnamnesi(anamnesi[0])" [nzAutosize]="{ minRows: 3, maxRows: 5 }"
                             name="anamnesi"></textarea>

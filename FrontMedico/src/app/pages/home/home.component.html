@@ -41,7 +41,7 @@
     <tbody>
         <tr *ngFor="let data of nzTable.data">
             <td nzLeft>{{ data.name }}</td>
-            <td>{{ data.email }}</td>
+            <td>{{ data.email | lowercase }}</td>
             <td>{{ data.phone }}</td>
             <td>{{ data.doctorSelected }}</td>
             <td>{{ data.prenotation|date:'dd/MM/yyyy HH:mm' }}</td>
