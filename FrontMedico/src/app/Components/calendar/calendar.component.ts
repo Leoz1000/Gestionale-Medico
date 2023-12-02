@@ -135,7 +135,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       return new Promise<EventInput[]>((resolve) => {
         this.subscriptionGetApp = this.api
           .getAppointement(
-            'https://angular-nest-auth-sandy.vercel.app/calendar' +
+            'https://angular-nest-auth-sandy.vercel.app/calendar/' +
               this.user.sub
           )
           .subscribe((data: any) => {
@@ -165,7 +165,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       return new Promise<EventInput[]>((resolve) => {
         this.subscriptionGetApp = this.api
           .getAppointement(
-            'https://angular-nest-auth-sandy.vercel.app/calendar' +
+            'https://angular-nest-auth-sandy.vercel.app/calendar/' +
               this.selectedValue
           )
           .subscribe((data: any) => {
