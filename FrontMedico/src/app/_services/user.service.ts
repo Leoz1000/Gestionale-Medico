@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private url = 'https://angular-nest-auth-sandy.vercel.app/';
+  private url = 'https://angular-nest-auth-sandy.vercel.app/users/';
 
   constructor(
     private httpClient: HttpClient,

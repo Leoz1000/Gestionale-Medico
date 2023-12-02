@@ -26,7 +26,7 @@ export class AuthService {
   //LOGIN FUCTION
   login(username: string, password: string): Observable<any> {
     return this.httpClient.post(
-      this.AUTH_API + 'signin',
+      this.AUTH_API + 'auth/signin',
       {
         username,
         password,
@@ -57,7 +57,7 @@ export class AuthService {
   logout(user: any): Observable<any> {
     const token = JSON.parse(window.localStorage.getItem(this.USER_KEY)!);
     return this.httpClient.post(
-      this.AUTH_API + 'logout',
+      this.AUTH_API + 'auth/logout',
       { user: user },
       {
         headers: {
