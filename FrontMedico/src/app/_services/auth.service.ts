@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  private AUTH_API = 'https://angular-nest-auth-ten.vercel.app/';
+  private AUTH_API = 'https://angular-nest-auth-sandy.vercel.app/';
   private USER_KEY = 'tokens';
 
   constructor(
@@ -42,7 +42,7 @@ export class AuthService {
 
     //USARE QUESTO URL PERCHE NON ESISTE UNA PAGINA DI AUTH PER REGISTRAZIONE
     return this.httpClient.post(
-      'https://angular-nest-auth-ten.vercel.app/' + 'users',
+      'https://angular-nest-auth-sandy.vercel.app/' + 'users',
       body,
       {
         headers: {
