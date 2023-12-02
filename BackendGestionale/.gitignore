@@ -10,6 +10,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+tsconfig.json
+tsconfig.build.json
+
 # OS
 .DS_Store
 

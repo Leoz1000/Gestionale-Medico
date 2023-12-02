@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ClientService {
-  private url = 'https://backend-steel-gamma.vercel.app/';
+  private url = 'https://angular-nest-auth-ten.vercel.app/';
 
   constructor(
     private httpClient: HttpClient,

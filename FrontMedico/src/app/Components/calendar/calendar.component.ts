@@ -135,7 +135,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       return new Promise<EventInput[]>((resolve) => {
         this.subscriptionGetApp = this.api
           .getAppointement(
-            'https://backend-steel-gamma.vercel.app/calendar/' + this.user.sub
+            'https://angular-nest-auth-ten.vercel.app/' + this.user.sub
           )
           .subscribe((data: any) => {
             //SET EVENTS_CLIENT_INFO
@@ -164,8 +164,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       return new Promise<EventInput[]>((resolve) => {
         this.subscriptionGetApp = this.api
           .getAppointement(
-            'https://backend-steel-gamma.vercel.app/calendar/' +
-              this.selectedValue
+            'https://angular-nest-auth-ten.vercel.app/' + this.selectedValue
           )
           .subscribe((data: any) => {
             //SET EVENTS_CLIENT_INFO
