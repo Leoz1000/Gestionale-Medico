@@ -150,6 +150,10 @@ export class AnamesiComponent implements OnInit, OnDestroy {
       });
   }
 
+  updateFiscalCode() {
+    this.fiscalCodeExists = false;
+  }
+
   //NEW USER INFO FORM AND SEND DATA
   submitForm(): void {
     setTimeout(() => {

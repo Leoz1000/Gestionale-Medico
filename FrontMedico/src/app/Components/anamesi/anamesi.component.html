@@ -21,8 +21,9 @@
                 <span>Fiscal Code</span>
             </nz-form-label>
             <nz-form-control [nzSm]="17" [nzXs]="24" [nzErrorTip]="'Please input your fiscal Code'">
-                <input nz-input id="fiscalCode" formControlName="fiscalCode" minlength="16" maxlength="16" />
-                <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
+                <input nz-input id="fiscalCode" (ngModelChange)="updateFiscalCode()" formControlName="fiscalCode"
+                    minlength="16" maxlength="16" />
+                <div style="margin: 0; padding: 0; font-size: 12px; color: #ff4d4f; font-weight: 400;"
                     *ngIf="fiscalCodeExists">
                     FiscalCode alredy exist!
                 </div>
@@ -87,8 +88,8 @@
                     </nz-form-label>
                     <nz-form-control [nzSm]="17" [nzXs]="24" nzErrorTip="The input is too short for a Fiscal Code!">
                         <input nz-input id="FiscalCode" formControlName="fiscalCode" [placeholder]="fiscalCode"
-                            minlength="16" maxlength="16" />
-                        <div style="margin: 0; padding: 0; font-size: 12px; color: red; font-weight: 400;"
+                            (ngModelChange)="updateFiscalCode()" minlength="16" maxlength="16" />
+                        <div style="margin: 0; padding: 0; font-size: 12px; color: #ff4d4f; font-weight: 400;"
                             *ngIf="fiscalCodeExists">
                             FiscalCode alredy exist!
                         </div>
