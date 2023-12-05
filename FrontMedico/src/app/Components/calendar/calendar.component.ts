@@ -200,7 +200,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
             userId: this.user.sub,
           }
         )
-        .subscribe((response) => {});
+        .subscribe((response) => {
+          this.value = '';
+        });
     } else {
       this.subscriptionAddApp = this.api
         .setAppointement(
@@ -213,7 +215,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
             userId: this.selectedValue,
           }
         )
-        .subscribe((response) => {});
+        .subscribe((response) => {
+          this.value = '';
+        });
     }
   }
   //SAVE UPDATED EVENT ON DB
