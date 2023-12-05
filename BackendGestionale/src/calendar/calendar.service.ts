@@ -47,7 +47,7 @@ export class CalendarService {
       .exec();
   }
 
-  async remove(id: string): Promise<CalendarDocument> {
+  async remove(id: string): Promise<any> {
     return this.calendarModel.findByIdAndDelete(id).exec();
   }
 }

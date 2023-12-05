@@ -74,7 +74,7 @@ let PatientService = class PatientService {
         }
     }
     async remove(id) {
-        return await this.patientModel.findByIdAndRemove(id).exec();
+        return await this.patientModel.findByIdAndRemove(id, { lean: true }).exec();
     }
 };
 exports.PatientService = PatientService;

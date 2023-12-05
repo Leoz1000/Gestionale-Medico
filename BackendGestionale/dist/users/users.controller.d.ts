@@ -19,5 +19,5 @@ export declare class UsersController {
     }]>;
     findById(id: string): Promise<import("./schemas/user.schema").UserDocument>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<import("./schemas/user.schema").UserDocument>;
-    remove(id: string, role: string): Promise<import("./schemas/user.schema").UserDocument>;
+    remove(id: string, role: string): Promise<any>;
 }

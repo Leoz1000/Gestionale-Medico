@@ -53,7 +53,7 @@ export declare class PatientService {
     update(id: string, updatePatientDto: UpdatePatientDto): Promise<import("mongoose").Document<unknown, {}, PatientDocument> & Patient & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    remove(id: string): Promise<import("mongoose").Document<unknown, {}, PatientDocument> & Patient & import("mongoose").Document<any, any, any> & {
+    remove(id: string): Promise<import("mongoose").FlattenMaps<PatientDocument> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
 }

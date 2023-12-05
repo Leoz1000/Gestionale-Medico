@@ -25,7 +25,7 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            throttler_1.ThrottlerModule.forRoot([{ ttl: 600, limit: 5 }]),
+            throttler_1.ThrottlerModule.forRoot([{ ttl: 60, limit: 5 }]),
             config_1.ConfigModule.forRoot({
                 envFilePath: '.env',
                 isGlobal: true,

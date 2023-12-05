@@ -42,7 +42,7 @@ export declare class Calendar {
 }
 export declare const CalendarSchema: import("mongoose").Schema<Calendar, import("mongoose").Model<Calendar, any, any, any, Document<unknown, any, Calendar> & Calendar & {
     _id: import("mongoose").Types.ObjectId;
-}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Calendar, Document<unknown, {}, Calendar> & Calendar & {
+}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Calendar, Document<unknown, {}, import("mongoose").FlatRecord<Calendar>> & import("mongoose").FlatRecord<Calendar> & {
     _id: import("mongoose").Types.ObjectId;
 }>;
 export {};

@@ -7,6 +7,6 @@ export declare class CalendarController {
     create(createCalendarDto: CreateCalendarDto): Promise<import("./schemas/calendar.schema").CalendarDocument>;
     findAllCalendarClient(id: string): Promise<import("./schemas/calendar.schema").CalendarDocument[]>;
     findAllCalendar(id: string): Promise<import("./schemas/calendar.schema").CalendarDocument[]>;
-    remove(id: string): Promise<import("./schemas/calendar.schema").CalendarDocument>;
+    remove(id: string): Promise<any>;
     update(id: string, updateCalendarDto: UpdateCalendarDto): Promise<import("./schemas/calendar.schema").CalendarDocument>;
 }

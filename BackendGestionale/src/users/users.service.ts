@@ -61,7 +61,7 @@ export class UsersService {
     return argon2.hash(data);
   }
 
-  async remove(id: string): Promise<UserDocument> {
+  async remove(id: string): Promise<any> {
     return await this.userModel.findByIdAndDelete(id).exec();
   }
 }

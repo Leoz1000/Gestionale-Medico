@@ -190,23 +190,29 @@ export class CalendarComponent implements OnInit, OnDestroy {
   handleEventAdd(args: any) {
     if (this.isDoctor) {
       this.subscriptionAddApp = this.api
-        .setAppointement('https://backend-steel-gamma.vercel.app/calendar', {
-          title: args.event.title,
-          start: args.event.start,
-          end: args.event.end,
-          allDay: args.event.allDay,
-          userId: this.user.sub,
-        })
+        .setAppointement(
+          'https://angular-nest-auth-sandy.vercel.app/calendar',
+          {
+            title: args.event.title,
+            start: args.event.start,
+            end: args.event.end,
+            allDay: args.event.allDay,
+            userId: this.user.sub,
+          }
+        )
         .subscribe((response) => {});
     } else {
       this.subscriptionAddApp = this.api
-        .setAppointement('https://backend-steel-gamma.vercel.app/calendar', {
-          title: args.event.title,
-          start: args.event.start,
-          end: args.event.end,
-          allDay: args.event.allDay,
-          userId: this.selectedValue,
-        })
+        .setAppointement(
+          'https://angular-nest-auth-sandy.vercel.app/calendar',
+          {
+            title: args.event.title,
+            start: args.event.start,
+            end: args.event.end,
+            allDay: args.event.allDay,
+            userId: this.selectedValue,
+          }
+        )
         .subscribe((response) => {});
     }
   }
@@ -215,7 +221,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     if (this.isDoctor) {
       this.subscriptionEditApp = this.api
         .updateAppointement(
-          'https://backend-steel-gamma.vercel.app/calendar',
+          'https://angular-nest-auth-sandy.vercel.app/calendar',
           args.event._def.extendedProps._id.toString(),
           {
             title: args.event.title,
@@ -229,7 +235,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     } else {
       this.subscriptionEditApp = this.api
         .updateAppointement(
-          'https://backend-steel-gamma.vercel.app/calendar',
+          'https://angular-nest-auth-sandy.vercel.app/calendar',
           args.event._def.extendedProps._id.toString(),
           {
             title: args.event.title,
@@ -246,7 +252,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   handleEventRemove(args: any) {
     this.subscriptionDeleteApp = this.api
       .removeAppointement(
-        'https://backend-steel-gamma.vercel.app/calendar',
+        'https://angular-nest-auth-sandy.vercel.app/calendar',
         args.event._def.extendedProps._id.toString()
       )
       .subscribe((response) => {});

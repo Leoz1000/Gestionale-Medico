@@ -14,7 +14,7 @@ import { PatientModule } from './patient/patient.module';
 
 @Module({
   imports: [
-    ThrottlerModule.forRoot([{ ttl: 600, limit: 5 }]),
+    ThrottlerModule.forRoot([{ ttl: 60, limit: 5 }]),
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
